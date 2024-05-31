@@ -39,6 +39,15 @@
         </div>
       {% endif %}
 
+      {% if datacontract.terms.testField %}
+        <div class="sm:col-span-1">
+          <dt class="text-sm font-medium text-gray-500">Test field</dt>
+          <dd class="mt-1 text-sm text-gray-900 flex" >
+            <span class="whitespace-pre-wrap">{{ datacontract.terms.testField }}</span>
+          </dd>
+        </div>
+      {% endif %}
+
     </dl>
   </div>
 </div>
