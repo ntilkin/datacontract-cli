@@ -110,6 +110,7 @@ class Info(pyd.BaseModel):
     owners: str = None
     documentation: str = None
     contact: Contact = None
+    contacts: str = None
     sourceCode: str = None
     tags: list[str] = []
     relatesToDataContractIds: list[str] = []

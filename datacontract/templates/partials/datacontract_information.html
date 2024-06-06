@@ -55,7 +55,7 @@
       <div class="sm:col-span-1">
         <dt class="text-sm font-medium text-gray-500">Contacts</dt>
         <dd class="mt-1 text-sm text-gray-900">
-          <span>{{ datacontract.info.owners }}</span>
+          <a style="text-decoration: underline; text-decoration-color: blue; color: blue" href="mailto:{{ datacontract.info.contacts }}">{{ datacontract.info.contacts }}</a>
         </dd>
       </div>
       {% endif %}
