@@ -107,7 +107,12 @@ class Info(pyd.BaseModel):
     status: str = None
     description: str = None
     owner: str = None
+    owners: str = None
+    documentation: str = None
     contact: Contact = None
+    sourceCode: str = None
+    tags: list[str] = []
+    relatesToDataContractIds: list[str] = []
 
 
 class Example(pyd.BaseModel):
