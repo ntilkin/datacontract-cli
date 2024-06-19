@@ -54,9 +54,11 @@
       {% if datacontract.info.contacts %}
       <div class="sm:col-span-1">
         <dt class="text-sm font-medium text-gray-500">Contacts</dt>
-        <dd class="mt-1 text-sm text-gray-900">
-          <a style="text-decoration: underline; text-decoration-color: blue; color: blue" href="mailto:{{ datacontract.info.contacts }}">{{ datacontract.info.contacts }}</a>
-        </dd>
+          {% for contact in datacontract.info.contacts %}
+          <dd class="mt-1 text-sm text-gray-900">
+            <a style="text-decoration: underline; text-decoration-color: blue; color: blue" href="mailto:{{ contact }}">{{ contact }}</a>
+          </dd>
+          {% endfor %}
       </div>
       {% endif %}
 

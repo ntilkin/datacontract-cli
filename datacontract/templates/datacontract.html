@@ -130,6 +130,47 @@
             {% endfor %}
           </section>
           {% endif %}
+
+
+          {% if datacontract.model %}
+          <section id="models">
+            <div class="flex justify-between">
+              <div class="px-4 sm:px-0">
+                <h1 class="text-base font-semibold leading-6 text-gray-900">
+                  Data Model
+                </h1>
+                <p class="text-sm text-gray-500">The logical data model</p>
+              </div>
+            </div>
+
+            <div class="mt-3 flow-root">
+              <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                  <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+
+                    <table class="min-w-full divide-y divide-gray-300">
+                      <thead class="bg-gray-50">
+                      <tr>
+                        <th scope="colgroup" colspan="4" class="py-2 pl-4 pr-3 text-left font-semibold text-gray-900 sm:pl-6">
+                          <span>{{ datacontract.model.table }}</span>
+                          <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{ datacontract.model.loadType }}</span>
+                        </th>
+
+                      </tr>
+                      </thead>
+                      <tbody class="divide-y divide-gray-200 bg-white">
+                      {% for column in datacontract.model.columns %}
+                        {{ render_partial('partials/model_field.html', nested = False, field_name=column.name, field = column, level = 0) }}
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {% endif %}
+
           
           {% if datacontract.definitions %}
           <section id="definitions">

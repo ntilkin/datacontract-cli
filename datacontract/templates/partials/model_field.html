@@ -24,7 +24,7 @@
     {{ field.type }}
     {% endif %}
   </td>
-  <td class="px-3 py-2 text-sm text-gray-500 w-7/12">
+  <td class="px-3 py-2   text-gray-500 w-7/12">
     {% if field.description %}
     <div class="text-gray-500">{{ field.description }}</div>
     {% else %}
@@ -84,6 +84,21 @@
       <span class="inline-flex items-center rounded-md bg-yellow-50 px-1 py-1 text-xs font-medium text-yellow-600 ring-1 ring-inset ring-yellow-500/10 mr-1 mt-1">PII</span>
       {% endif %}
     </div>
+    <div class="source-info bg-blue-50 text-blue-600 rounded-md text-sm" style="text-align: center;" id="datasource">
+      {% if field.dataSource %}
+        <p><b>Data source</b>: {{field.dataSource}}</p>
+      {% endif %}
+      {% if field.nameInDataSource %}
+        <p><b>Name in data source</b>: {{field.nameInDataSource}}</p>
+      {% endif %}
+    </div>
+  </td>
+  <td>
+      {% if field.dataSource %}
+      <div style="text-align:center;vertical-align:bottom">
+      <button onclick="toggleSource(this)" class="inline-flex items-center rounded-md bg-blue-50 px-1 py-1 text-xs font-medium text-blue-600 ring-1 ring-inset ring-blue-500/10 mr-1 mt-1 ">View source</button>
+      </div>
+      {% endif %}
   </td>
 </tr>
 
@@ -95,3 +110,18 @@
 <tr style="--tw-divide-y-reverse: 2">
 </tr>
 {% endif %}
+
+<!-- Beware that this function may prove to be quite brittle if changes to the HTML tag structure are done-->
+<script>
+        function toggleSource(button) {
+            const td = button.parentElement.parentElement.previousElementSibling;
+            const sourceInfo = td.querySelector('.source-info');
+            if (sourceInfo.style.display === "none" || sourceInfo.style.display === "") {
+                sourceInfo.style.display = "block";
+                button.textContent = "Hide source";
+            } else {
+                sourceInfo.style.display = "none";
+                button.textContent = "View source";
+            }
+        }
+</script>

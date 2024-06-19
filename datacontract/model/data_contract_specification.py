@@ -63,6 +63,11 @@ class Definition(pyd.BaseModel):
     example: str = None
 
 
+class ConditionReturnPair(pyd.BaseModel):
+    condition: str = None
+    return_value: str = None
+
+
 class Field(pyd.BaseModel):
     ref: str = pyd.Field(default=None, alias="$ref")
     ref_obj: Definition = pyd.Field(default=None, exclude=True)
@@ -91,6 +96,10 @@ class Field(pyd.BaseModel):
     scale: int = None
     example: str = None
     config: Dict[str, Any] = None
+    name: str = None
+    dataSource: str = None
+    nameInDataSource: str = None
+    value: list[ConditionReturnPair] = None
 
 
 class Model(pyd.BaseModel):
@@ -99,6 +108,13 @@ class Model(pyd.BaseModel):
     namespace: str = None
     title: str = None
     fields: Dict[str, Field] = {}
+
+
+class ModelJC(pyd.BaseModel):
+    table: str = None
+    description: str = None
+    loadType: str = None
+    columns: list[Field] = None
 
 
 class Info(pyd.BaseModel):
@@ -110,7 +126,7 @@ class Info(pyd.BaseModel):
     owners: str = None
     documentation: str = None
     contact: Contact = None
-    contacts: str = None
+    contacts: list[str] = []
     sourceCode: str = None
     tags: list[str] = []
     relatesToDataContractIds: list[str] = []
@@ -191,6 +207,7 @@ class DataContractSpecification(pyd.BaseModel):
     servers: Dict[str, Server] = {}
     terms: Terms = None
     models: Dict[str, Model] = {}
+    model : ModelJC = None
     definitions: Dict[str, Definition] = {}
     # schema: Dict[str, str]
     examples: List[Example] = []
