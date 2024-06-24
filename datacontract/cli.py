@@ -151,6 +151,7 @@ def export(
         ),
     ] = None,
     server: Annotated[str, typer.Option(help="The server name to export.")] = None,
+    schema: Annotated[str, typer.Option(help="The schema against which the data contract will be validated before being exported")] = None,
     model: Annotated[
         str,
         typer.Option(
@@ -185,6 +186,7 @@ def export(
         model=model,
         rdf_base=rdf_base,
         sql_server_type=sql_server_type,
+        schema_location=schema
     )
     # Don't interpret console markup in output.
     if output is None:

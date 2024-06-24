@@ -302,7 +302,7 @@ class DataContract:
         )
 
     def export(
-        self, export_format: ExportFormat, model: str = "all", rdf_base: str = None, sql_server_type: str = "auto"
+        self, export_format: ExportFormat, model: str = "all", rdf_base: str = None, sql_server_type: str = "auto", schema_location: str = None
     ) -> str:
         data_contract = resolve.resolve_data_contract(
             self._data_contract_file,
@@ -310,6 +310,7 @@ class DataContract:
             self._data_contract,
             inline_definitions=True,
             inline_quality=True,
+            schema_location=schema_location
         )
         if export_format == "jsonschema":
             model_name, model_value = self._check_models_for_export(data_contract, model, export_format)
