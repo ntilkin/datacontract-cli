@@ -152,11 +152,37 @@
           </dd>
         </div>
         {% endif %}
+        {% if datacontract.servicelevels.frequency.type %}
+        <div class="sm:col-span-1">
+          <dt class="text-sm font-medium text-gray-500">Type</dt>
+          <dd class="mt-1 text-sm text-gray-900">
+            <span class="whitespace-pre-wrap">{{ datacontract.servicelevels.frequency.type }}</span>
+          </dd>
+        </div>
+        {% endif %}
         {% if datacontract.servicelevels.frequency.interval %}
         <div class="sm:col-span-1">
           <dt class="text-sm font-medium text-gray-500">Interval</dt>
           <dd class="mt-1 text-sm text-gray-900">
             <span class="whitespace-pre-wrap">{{ datacontract.servicelevels.frequency.interval }}</span>
+          </dd>
+        </div>
+        {% endif %}
+        {% if datacontract.servicelevels.frequency.time_list %}
+        <div class="sm:col-span-1">
+          <dt class="text-sm font-medium text-gray-500">Frequency schedule</dt>
+            {% for time in datacontract.servicelevels.frequency.time_list %}
+            <dd class="mt-1 text-sm text-gray-900">
+              {{time}}
+            </dd>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if datacontract.servicelevels.frequency.freq_type %}
+        <div class="sm:col-span-1">
+          <dt class="text-sm font-medium text-gray-500">Frequency type</dt>
+          <dd class="mt-1 text-sm text-gray-900">
+            <span class="whitespace-pre-wrap">{{ datacontract.servicelevels.frequency.freq_type }}</span>
           </dd>
         </div>
         {% endif %}

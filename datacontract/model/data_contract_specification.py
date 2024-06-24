@@ -174,6 +174,8 @@ class Frequency(pyd.BaseModel):
     type: Optional[str] = None
     interval: Optional[str] = None
     cron: Optional[str] = None
+    freq_type : Optional[str] = None
+    time_list: Optional[list[str]] = None
 
 
 class Support(pyd.BaseModel):
