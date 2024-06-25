@@ -153,7 +153,23 @@
                       <tr>
                         <th scope="colgroup" colspan="4" class="py-2 pl-4 pr-3 text-left font-semibold text-gray-900 sm:pl-6">
                           <span>{{ datacontract.model.table }}</span>
+                          {% if datacontract.model.loadType %}
                           <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{ datacontract.model.loadType }}</span>
+                          {% endif %}
+                          {% if datacontract.model.sensitivity %}
+                            {% if datacontract.model.sensitivity == 'Private'%}
+                            <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{ datacontract.model.sensitivity }}</span>
+                            {% endif %}
+                            {% if datacontract.model.sensitivity == 'Public'%}
+                            <span class="inline-flex items-center rounded-md bg-green-500 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-gray-500/10">{{ datacontract.model.sensitivity }}</span>
+                            {% endif %}
+                            {% if datacontract.model.sensitivity == 'Limited'%}
+                            <span class="inline-flex items-center rounded-md bg-amber-400 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-gray-500/10">{{ datacontract.model.sensitivity }}</span>
+                            {% endif %}
+                            {% if datacontract.model.sensitivity == 'Confidential'%}
+                            <span class="inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-xs font-medium text-red-800 ring-1 ring-inset ring-gray-500/10">{{ datacontract.model.sensitivity }}</span>
+                            {% endif %}
+                          {% endif %}
                         </th>
 
                       </tr>
@@ -284,6 +300,12 @@
   </footer>
 
 </div>
+
+<script>
+function setSensitivityDisplayClass(value){
+  console.log("test")
+}
+</script>
 
 </body>
 </html>

@@ -100,6 +100,7 @@ class Field(pyd.BaseModel):
     dataSource: str = None
     nameInDataSource: str = None
     value: list[ConditionReturnPair] = None
+    sensitivity: str = None
 
 
 class Model(pyd.BaseModel):
@@ -115,6 +116,7 @@ class ModelJC(pyd.BaseModel):
     description: str = None
     loadType: str = None
     columns: list[Field] = None
+    sensitivity: str = None
 
 
 class Info(pyd.BaseModel):

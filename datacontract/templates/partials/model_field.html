@@ -38,6 +38,20 @@
     {% endif %}
 
     <div>
+      {% if field.sensitivity %}
+        {% if field.sensitivity == 'Private'%}
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{ field.sensitivity }}</span>
+        {% endif %}
+        {% if field.sensitivity == 'Public'%}
+        <span class="inline-flex items-center rounded-md bg-green-500 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-gray-500/10">{{ field.sensitivity }}</span>
+        {% endif %}
+        {% if field.sensitivity == 'Limited'%}
+        <span class="inline-flex items-center rounded-md bg-amber-400 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-gray-500/10">{{ field.sensitivity }}</span>
+        {% endif %}
+        {% if field.sensitivity == 'Confidential'%}
+        <span class="inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-xs font-medium text-red-800 ring-1 ring-inset ring-gray-500/10">{{ field.sensitivity }}</span>
+        {% endif %}
+      {% endif %}
       {% if field.primary %}
       <span class="inline-flex items-center rounded-md bg-gray-50 px-1 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 mr-1 mt-1">primary</span>
       {% endif %}
